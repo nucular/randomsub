@@ -1,0 +1,2 @@
+aiohttp==0.22.5
+aiohttp_index==0.1
