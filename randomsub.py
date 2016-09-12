@@ -84,5 +84,5 @@ if __name__ == "__main__":
   web.run_app(
     app,
     port=os.environ.get("PORT", 8000),
-    host=os.environ.get("HOST", "localhost")
+    host=os.environ.get("HOST", "0.0.0.0")
   )
