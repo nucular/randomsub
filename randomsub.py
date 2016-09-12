@@ -48,6 +48,9 @@ async def get_randnsfw(req):
   return web.HTTPTemporaryRedirect(random_sub(DIRTY_NAME))
 
 async def init():
+  """
+  Download subreddit database. Only ran once a day at max on Heroku.
+  """
   async with aiohttp.ClientSession() as session:
     async with session.get("https://api.github.com/repos/voussoir/reddit/releases") as res:
       res.raise_for_status()
@@ -67,7 +70,7 @@ async def init():
 
 if __name__ == "__main__":
   loop = asyncio.get_event_loop()
-  #loop.run_until_complete(init())
+  loop.run_until_complete(init())
 
   app = web.Application(
     middlewares=[
